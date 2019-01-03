@@ -221,7 +221,10 @@ static NSArray *FMDBClassesConformingToProtocol(Protocol *protocol)
         for (Class migrationClass in conformingClasses) {
             if ([migrationClass isSubclassOfClass:[FMDBFileMigration class]]) continue;
             id<FMDBMigrating> migration = [migrationClass new];
-            [migrations addObject:migration];
+            NSString *db = migration.dbName;
+            if ([self.database.databasePath containsString:db]) {
+                [migrations addObject:migration];
+            }
         }
     }
     

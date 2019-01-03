@@ -203,6 +203,12 @@
 @property (nonatomic, readonly) NSString *name;
 
 /**
+ @abstract The name of the database needs migration
+ @discussion use this property to distinguish migration with diffrent databases
+ */
+@property (nonatomic, readonly) NSString *dbName;
+
+/**
  @abstract The numeric version of the migration. 
  @discussion While monotonically incremented versions are fully supported, it is recommended that to use a timestamp format such as
  201406063106474. Timestamps avoid unnecessary churn in a codebase that is heavily branched.
